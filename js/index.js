@@ -27,21 +27,20 @@ function createTable(element, row = 15, cell = 15){
         }
         table.append(tr);
     }
+    let countMine = document.getElementById('mine').value;
 
     const field = [...table.querySelectorAll('td')];
-    stateMine(field);
+    stateMine(field, row, cell, countMine);
     return table
 };
 
-//const field = [...createTable(document.getElementById('field')).querySelectorAll('td')];
-
   
-function stateMine(field){
+function stateMine(field, countRow, countCell, countMine){
     
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < countMine; i++){
 
-        let randomX = Math.floor(Math.random() * (14 - 0)) + 0;
-        let randomY = Math.floor(Math.random() * (14 - 0)) + 0;
+        let randomX = Math.floor(Math.random() * (countRow - 0)) + 0;
+        let randomY = Math.floor(Math.random() * (countCell - 0)) + 0;
         let cell = findCell(field, randomX, randomY);
         if(!cell[0].classList.contains('mine')){
             cell[0].classList.add('mine');
